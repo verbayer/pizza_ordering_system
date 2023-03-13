@@ -1,6 +1,7 @@
 # encoding=UTF-8
 import csv
 import datetime as dt
+# menünün ve menü dosyasının oluşturulması
 menufile = open("Menu.txt", "w", encoding="utf-8")
 menufile.write("Lütfen Bir Pizza Tabanı Seçiniz: \n")
 menufile.write("1: Klasik\n")
@@ -16,7 +17,7 @@ menufile.close()
 menufile = open("Menu.txt", "r", encoding="utf-8")
 print(menufile.read())
 menufile.close()
-
+# Pizza ana sınıfının oluşturulması
 class Pizza:
     def __init__(self, isim, fiyat, aciklama):
         self.fiyat = fiyat
@@ -29,7 +30,7 @@ class Pizza:
     def get_desc(self):
         return f"Bu pizza, {self.aciklama} ve fiyatı {self.fiyat} TL'dir."
 
-
+# pizza türleri için alt sınıflar
 class Margarita(Pizza):
     def __init__(self, isim, fiyat, aciklama):
         super().__init__(isim, fiyat, aciklama)
@@ -51,7 +52,7 @@ klasik_pizza = Klasik("klasik", 50, "değişmez bir lezzete sahip, tadına doyam
 
 sucuklu_pizza = Sucuklu("sucuklu", 52, "sucuk severlerin bayılacağı, bol sucuklu bir pizzadır")
 
-
+# soslar için ana sınıf oluşturulması
 class SosveSus:
     def __init__(self, isim, fiyat, aciklama):
         self.fiyat = fiyat
@@ -64,7 +65,7 @@ class SosveSus:
     def get_desc(self):
         return f"{self.aciklama}, fiyatı {self.fiyat} TL'dir."
 
-
+# sos türleri için alt sınıflar
 class Zeytin(SosveSus):
     def __init__(self, isim, fiyat, aciklama):
         super().__init__(isim, fiyat, aciklama)
@@ -87,7 +88,7 @@ mantar_ekleme = Mantar("mantar eklemeli", 6, "seçtiğiniz pizzaya isteğe bağl
 misir_ekleme = Misir("mısır eklemeli", 5, "seçtiğiniz pizzaya isteğe bağlı mısır eklenir")
 
 sos_yok = SosveSus("sossuz", 0, "sos seçilmemiştir")
-
+# sosların açıklamasını görüntülemeyi sağlayan menü
 def aciklama_secimi():
     secim_iki = input("hakkında bilgi almak istediğiniz ürünü belirtin\
     (1/2/3/11/12/13/c(çıkış)):")
@@ -115,6 +116,7 @@ def aciklama_secimi():
     else:
       print("geçerli bir seçenek girilmedi")
       aciklama_secimi()
+# taban seçim menüsü
 def secim():
     taban_secim = input("işlem belirtiniz(ürünler içinden 1/2/3 veya bilgi almak için b)")
     if taban_secim == "b":
@@ -128,7 +130,7 @@ def secim():
     else:
       print("geçerli bir seçenek girilmedi")
       secim()
-
+# sos seçim menüsü
 def sos_secimi():
   sos_secim = input("istediğiniz sosu seçiniz (1(zeytin)/2(mantar)/3(mısır), sos seçmeyi geçmek için y)")
   if sos_secim == "1":
@@ -146,6 +148,7 @@ def sos_secimi():
 secilen_taban = secim()
 secilen_sos = sos_secimi()
 toplam_fiyat = secilen_taban.get_cost() + secilen_sos.get_cost()
+# fiyatın gösterilmesi, ardından csv dosyasının oluşturulup ödeme bilgilerinin alınması ile bu verilerin dosyaya yazılması
 def odeme():
   print(f"ödenecek ücret {toplam_fiyat} TL'dir")
   print("siparişinizi tamamlamak için istenen bilgileri giriniz: \n")
