@@ -1,0 +1,10 @@
+Lütfen Bir Pizza Tabanı Seçiniz: 
+1: Klasik
+2: Margarita
+3: Sucuklu Pizza
+ve seçeceğiniz sos:
+11: Zeytin
+12: Mantar
+13: Mısır
+işlem seçiniz(ürün seçmek için pizza numarasını, ardından seçtiğiniz sosu giriniz / bilgi almak için b, ardından bilgi almak istediğiniz ürünün numarasını giriniz)
+Teşekkür Ederiz!
